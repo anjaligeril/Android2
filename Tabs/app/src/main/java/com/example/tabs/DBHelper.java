@@ -36,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
-    public boolean addUser(String name){
+    public boolean addItem(String name){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv  = new ContentValues();
@@ -61,7 +61,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String sql = "select * from "+ Table_name1+" order by id desc" ;
+        String sql = "select * from "+ Table_name1+";" ;
 
         Cursor data = db.rawQuery(sql,null);
 
@@ -71,12 +71,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void deleteData(int id){
         SQLiteDatabase db=this.getWritableDatabase();
-        String sql1="select count(*) from users;";
-        Cursor result=db.rawQuery(sql1,null);
-        String sql="DELETE FROM users WHERE id=1;";
+
+        String sql="DELETE FROM urgent1 WHERE id="+id+" ;";
         db.execSQL(sql);
-        String sql2="select count(*) from users;";
-        db.rawQuery(sql2,null);
+
         Log.i("result",sql);
     }
 
