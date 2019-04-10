@@ -1,0 +1,31 @@
+public class MainActivity extends AppCompatActivity {
+
+    List<String> users = new ArrayList<String>();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+       users.add("john");
+         users.add("jane");
+         users.add("alex");
+         users.add("sam");
+        ListView lv=(ListView)findViewById(R.id.list);
+        ArrayAdapter<String> userData=new ArrayAdapter<String>(this,R.layout.activity_list_component,R.id.listName,users);
+        lv.setAdapter(userData);
+        Button submit = (Button) findViewById(R.id.submit);
+       ListView mListView = (ListView) findViewById(R.id.list);
+        final EditText listContent = (EditText) findViewById(R.id.listContent);
+        submit.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View currentView) {
+
+                users.add(new String(listContent.getText().toString()));
+            }
+        });
+
+    }
+
+
+
+
+}
